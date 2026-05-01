@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Dai 🎂</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #1a0522;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .page {
+            position: relative;
+            z-index: 2;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 16px 80px;
+        }
+
+        /* FONDO */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse 70% 60% at 15% 15%, rgba(220, 80, 180, 0.28) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 50% at 85% 10%, rgba(180, 60, 220, 0.22) 0%, transparent 65%),
+                radial-gradient(ellipse 80% 40% at 50% 90%, rgba(120, 40, 180, 0.2) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 60% at 95% 70%, rgba(255, 100, 160, 0.15) 0%, transparent 60%);
+        }
+
+        /* CORAZONES FLOTANTES */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hrt {
+            position: absolute;
+            font-size: var(--fs, 18px);
+            color: var(--c, #f9a8d4);
+            opacity: 0;
+            animation: heartRise var(--d, 8s) ease-in infinite;
+            animation-delay: var(--dl, 0s);
+        }
+
+        @keyframes heartRise {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(var(--rot, 0deg)) scale(0.6);
+            }
+
+            15% {
+                opacity: 0.7;
+            }
+
+            85% {
+                opacity: 0.4;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-105vh) rotate(calc(var(--rot, 0deg) + 180deg)) scale(1.1);
+            }
+        }
+
+        /* SPARKLES */
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .sp {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            animation: spkl var(--sd, 3s) ease-in-out infinite;
+            animation-delay: var(--dl2, 0s);
+        }
+
+        @keyframes spkl {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.4);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.3);
+            }
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            padding: 44px 0 10px;
+            position: relative;
+        }
+
+        .header-deco {
+            font-size: 1.8rem;
+            letter-spacing: 14px;
+            opacity: 0.7;
+            margin-bottom: 10px;
+            animation: decoBounce 2.5s ease-in-out infinite;
+        }
+
+        @keyframes decoBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .title-main {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            background: linear-gradient(135deg, #ffc2e2, #ff79c6, #e0aaff, #c77dff, #ffc2e2);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShimmer 5s ease infinite;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        @keyframes titleShimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .title-sub {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 4vw, 1.7rem);
+            color: rgba(255, 210, 240, 0.8);
+            letter-spacing: 4px;
+            margin-top: 4px;
+        }
+
+        .badge-wrap {
+            margin-top: 16px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 10px 32px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #f72585, #b5179e, #7209b7);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            box-shadow: 0 0 30px rgba(247, 37, 133, 0.5), 0 0 60px rgba(181, 23, 158, 0.25);
+            animation: badgePulse 2.2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(247, 37, 133, 0.4), 0 0 50px rgba(114, 9, 183, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(247, 37, 133, 0.7), 0 0 80px rgba(114, 9, 183, 0.4), 0 0 120px rgba(247, 37, 133, 0.15);
+            }
+        }
+
+        /* DIVISOR */
+        .div-fancy {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 22px 0;
+            opacity: 0.55;
+        }
+
+        .div-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #f9a8d4, transparent);
+        }
+
+        .div-heart {
+            color: #f9a8d4;
+            font-size: 14px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.35);
+            }
+        }
+
+        /* LAYOUT PRINCIPAL */
+        .main-scene {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 0;
+            margin: 8px 0 24px;
+            position: relative;
+        }
+
+        /* RAMO ANIMADO */
+        .bouquet-svg {
+            overflow: visible;
+        }
+
+        .fl-center {
+            animation: swayCenter 3s ease-in-out infinite;
+            transform-origin: 130px 290px;
+        }
+
+        .fl-left1 {
+            animation: swayL1 3.3s ease-in-out infinite;
+            transform-origin: 104px 290px;
+        }
+
+        .fl-right1 {
+            animation: swayR1 3.1s ease-in-out infinite;
+            transform-origin: 158px 290px;
+        }
+
+        .fl-left2 {
+            animation: swayL2 2.9s ease-in-out infinite;
+            transform-origin: 88px 290px;
+        }
+
+        .fl-right2 {
+            animation: swayR2 3.4s ease-in-out infinite;
+            transform-origin: 172px 290px;
+        }
+
+        .fl-back-l {
+            animation: swayL2 3.6s ease-in-out infinite;
+            transform-origin: 74px 290px;
+        }
+
+        .fl-back-r {
+            animation: swayR1 3.2s ease-in-out infinite;
+            transform-origin: 186px 290px;
+        }
+
+        .fl-tiny-l {
+            animation: swayL1 2.8s ease-in-out infinite;
+            transform-origin: 72px 290px;
+        }
+
+        .fl-tiny-r {
+            animation: swayR2 3.0s ease-in-out infinite;
+            transform-origin: 188px 290px;
+        }
+
+        .fl-fill {
+            animation: swayCenter 2.7s ease-in-out infinite;
+            transform-origin: 130px 290px;
+        }
+
+        @keyframes swayCenter {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            33% {
+                transform: rotate(2.5deg);
+            }
+
+            66% {
+                transform: rotate(-2deg);
+            }
+        }
+
+        @keyframes swayL1 {
+
+            0%,
+            100% {
+                transform: rotate(-1deg);
+            }
+
+            40% {
+                transform: rotate(2deg);
+            }
+
+            75% {
+                transform: rotate(-3deg);
+            }
+        }
+
+        @keyframes swayR1 {
+
+            0%,
+            100% {
+                transform: rotate(1deg);
+            }
+
+            40% {
+                transform: rotate(-2deg);
+            }
+
+            75% {
+                transform: rotate(3deg);
+            }
+        }
+
+        @keyframes swayL2 {
+
+            0%,
+            100% {
+                transform: rotate(-2deg);
+            }
+
+            35% {
+                transform: rotate(3deg);
+            }
+
+            70% {
+                transform: rotate(-1.5deg);
+            }
+        }
+
+        @keyframes swayR2 {
+
+            0%,
+            100% {
+                transform: rotate(2deg);
+            }
+
+            35% {
+                transform: rotate(-3deg);
+            }
+
+            70% {
+                transform: rotate(1.5deg);
+            }
+        }
+
+        .leaf-group {
+            animation: leafSway 4s ease-in-out infinite;
+        }
+
+        .leaf-group:nth-child(2n) {
+            animation-delay: 0.8s;
+            animation-duration: 3.5s;
+        }
+
+        @keyframes leafSway {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(4deg);
+            }
+        }
+
+        /* PASTEL */
+        .cake-wrap {
+            animation: floatCake 3.8s ease-in-out infinite;
+            margin-left: -24px;
+        }
+
+        @keyframes floatCake {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-9px);
+            }
+        }
+
+        .flame {
+            animation: flicker 0.65s ease-in-out infinite alternate;
+            transform-origin: 50% 100%;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: scaleX(1) scaleY(1);
+            }
+
+            45% {
+                transform: scaleX(0.8) scaleY(1.15);
+            }
+
+            100% {
+                transform: scaleX(1.12) scaleY(0.9);
+            }
+        }
+
+        /* CORAZONES ESCENA CENTRAL */
+        .scene-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sh {
+            position: absolute;
+            font-size: var(--s, 20px);
+            color: var(--hc, #f9a8d4);
+            animation: scenePop var(--pd, 4s) ease-in-out infinite;
+            animation-delay: var(--pdl, 0s);
+        }
+
+        @keyframes scenePop {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(-18px) scale(1.2);
+                opacity: 0.9;
+            }
+        }
+
+        /* MAÑANITAS */
+        .song-card {
+            background: linear-gradient(135deg, rgba(247, 37, 133, 0.08), rgba(114, 9, 183, 0.1));
+            border: 1px solid rgba(249, 168, 212, 0.25);
+            border-radius: 24px;
+            padding: 30px 28px 26px;
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .song-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(247, 37, 133, 0.04), rgba(114, 9, 183, 0.06));
+            pointer-events: none;
+        }
+
+        .song-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.55rem;
+            color: #ffc2e2;
+            text-align: center;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+
+        .notes-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .note {
+            font-size: 1.5rem;
+            color: #e0aaff;
+            animation: noteDance 1.1s ease-in-out infinite alternate;
+        }
+
+        .note:nth-child(2) {
+            animation-delay: .25s;
+            color: #ffc2e2;
+        }
+
+        .note:nth-child(3) {
+            animation-delay: .5s;
+            color: #f9a8d4;
+        }
+
+        .note:nth-child(4) {
+            animation-delay: .75s;
+            color: #e0aaff;
+        }
+
+        .note:nth-child(5) {
+            animation-delay: 1s;
+            color: #ffc2e2;
+        }
+
+        @keyframes noteDance {
+            from {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+            to {
+                transform: translateY(-8px) rotate(10deg);
+            }
+        }
+
+        .song-text {
+            color: rgba(255, 230, 248, 0.9);
+            line-height: 2;
+            font-size: clamp(.87rem, 2.5vw, 1rem);
+            text-align: left;
+        }
+
+        .song-text p {
+            margin-bottom: 12px;
+        }
+
+        .song-text strong {
+            color: #ff79c6;
+            font-weight: 700;
+        }
+
+        /* BOTÓN CARTA */
+        .btn-carta {
+            display: block;
+            width: 100%;
+            padding: 17px;
+            border-radius: 18px;
+            border: none;
+            background: linear-gradient(135deg, #f72585, #b5179e, #7209b7);
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: .5px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 32px rgba(247, 37, 133, 0.4);
+            transition: all .3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-carta::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.15);
+            transform: skewX(-20deg);
+            animation: btnShine 3s ease-in-out infinite;
+        }
+
+        @keyframes btnShine {
+            0% {
+                left: -60%;
+            }
+
+            100% {
+                left: 140%;
+            }
+        }
+
+        .btn-carta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 44px rgba(247, 37, 133, 0.55);
+        }
+
+        /* CARTA */
+        .letter-card {
+            display: none;
+            background: linear-gradient(160deg, rgba(30, 5, 50, 0.85), rgba(20, 3, 40, 0.9));
+            border: 1px solid rgba(249, 168, 212, 0.25);
+            border-radius: 24px;
+            padding: 36px 30px;
+            color: rgba(255, 235, 250, 0.92);
+            line-height: 1.9;
+            font-size: clamp(.9rem, 2.5vw, 1rem);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f72585, #b5179e, #7209b7, #4cc9f0, #f72585);
+            background-size: 250% 100%;
+            animation: rainbowBar 3s linear infinite;
+        }
+
+        @keyframes rainbowBar {
+            from {
+                background-position: 0%
+            }
+
+            to {
+                background-position: 250%
+            }
+        }
+
+        .letter-card.open {
+            display: block;
+            animation: slideUp .5s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .letter-card p {
+            margin-bottom: 15px;
+        }
+
+        .hl {
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .pink {
+            color: #ff79c6;
+            font-weight: 700;
+        }
+
+        .letter-deco {
+            text-align: center;
+            color: rgba(249, 168, 212, 0.45);
+            letter-spacing: 14px;
+            font-size: 1.1rem;
+            margin: 14px 0 0;
+        }
+
+        .letter-hearts {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 16px 0;
+            font-size: 1.3rem;
+        }
+
+        .lh {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .lh:nth-child(2) {
+            animation-delay: .2s;
+            color: #e0aaff;
+        }
+
+        .lh:nth-child(3) {
+            animation-delay: .4s;
+            color: #ffc2e2;
+        }
+
+        .lh:nth-child(4) {
+            animation-delay: .6s;
+            color: #f9a8d4;
+        }
+
+        .lh:nth-child(5) {
+            animation-delay: .8s;
+            color: #e0aaff;
+        }
+
+        /* CONFETI */
+        .cfp {
+            position: fixed;
+            top: -10px;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 3px;
+            animation: cfall linear forwards;
+        }
+
+        @keyframes cfall {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-layer"></div>
+    <div class="hearts-bg" id="hbg"></div>
+    <div class="sparkles" id="spk"></div>
+
+    <div class="page">
+
+        <div class="header">
+            <div class="header-deco">♡ ✿ ♡ ✿ ♡</div>
+            <div class="title-main">Dai</div>
+            <div class="title-sub">feliz cumpleaños, mi amor</div>
+            <div class="badge-wrap">
+                <span class="badge">♡ 19 añitos hermosos ♡</span>
+            </div>
+        </div>
+
+        <div class="div-fancy">
+            <div class="div-line"></div><span class="div-heart">♥</span>
+            <div class="div-line"></div><span class="div-heart">♥</span>
+            <div class="div-line"></div><span class="div-heart">♥</span>
+            <div class="div-line"></div>
+        </div>
+
+        <!-- ESCENA PRINCIPAL -->
+        <div class="main-scene">
+            <div class="scene-hearts">
+                <span class="sh" style="--s:22px;--hc:#f9a8d4;--pd:4s;--pdl:0s;left:5%;top:20%;">♥</span>
+                <span class="sh" style="--s:14px;--hc:#e0aaff;--pd:3.5s;--pdl:0.5s;left:12%;top:55%;">♡</span>
+                <span class="sh" style="--s:18px;--hc:#ffc2e2;--pd:5s;--pdl:1s;left:2%;top:70%;">♥</span>
+                <span class="sh" style="--s:16px;--hc:#c77dff;--pd:4.2s;--pdl:0.3s;right:5%;top:15%;">♥</span>
+                <span class="sh" style="--s:12px;--hc:#ffd6e7;--pd:3.8s;--pdl:0.8s;right:10%;top:50%;">♡</span>
+                <span class="sh" style="--s:20px;--hc:#ff79c6;--pd:4.5s;--pdl:0.2s;right:3%;top:72%;">♥</span>
+                <span class="sh" style="--s:10px;--hc:#e0aaff;--pd:3.2s;--pdl:1.2s;left:20%;top:10%;">✦</span>
+                <span class="sh" style="--s:10px;--hc:#ffc2e2;--pd:4.8s;--pdl:0.6s;right:20%;top:8%;">✦</span>
+            </div>
+
+            <!-- RAMO SVG -->
+            <svg class="bouquet-svg" width="270" height="390" viewBox="0 0 270 390">
+                <defs>
+                    <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f72585" stop-opacity=".92" />
+                        <stop offset="50%" stop-color="#b5179e" stop-opacity=".95" />
+                        <stop offset="100%" stop-color="#7209b7" stop-opacity=".92" />
+                    </linearGradient>
+                    <linearGradient id="rbg" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ffd6e7" />
+                        <stop offset="40%" stop-color="#fffbef" />
+                        <stop offset="100%" stop-color="#ffd6e7" />
+                    </linearGradient>
+                </defs>
+
+                <!-- TALLOS -->
+                <path d="M135 318 Q122 278 108 238 Q97 208 90 183" fill="none" stroke="#2d7d2a" stroke-width="3.2"
+                    stroke-linecap="round" />
+                <path d="M135 318 Q135 276 135 248 Q135 218 135 193" fill="none" stroke="#388e3c" stroke-width="3.8"
+                    stroke-linecap="round" />
+                <path d="M135 318 Q148 278 162 238 Q173 208 180 183" fill="none" stroke="#2d7d2a" stroke-width="3.2"
+                    stroke-linecap="round" />
+                <path d="M135 318 Q112 286 96 265 Q83 247 75 228" fill="none" stroke="#2d7d2a" stroke-width="2.6"
+                    stroke-linecap="round" />
+                <path d="M135 318 Q158 286 174 265 Q187 247 195 228" fill="none" stroke="#2d7d2a" stroke-width="2.6"
+                    stroke-linecap="round" />
+
+                <!-- HOJAS -->
+                <g class="leaf-group">
+                    <ellipse cx="98" cy="256" rx="15" ry="7" fill="#4caf50" transform="rotate(-42,98,256)"
+                        opacity=".92" />
+                    <ellipse cx="116" cy="218" rx="13" ry="6" fill="#66bb6a" transform="rotate(-28,116,218)"
+                        opacity=".9" />
+                    <ellipse cx="155" cy="226" rx="13" ry="6" fill="#4caf50" transform="rotate(28,155,226)"
+                        opacity=".9" />
+                    <ellipse cx="173" cy="256" rx="15" ry="7" fill="#66bb6a" transform="rotate(42,173,256)"
+                        opacity=".92" />
+                    <ellipse cx="82" cy="240" rx="12" ry="5" fill="#43a047" transform="rotate(-55,82,240)"
+                        opacity=".88" />
+                    <ellipse cx="188" cy="240" rx="12" ry="5" fill="#43a047" transform="rotate(55,188,240)"
+                        opacity=".88" />
+                    <ellipse cx="106" cy="188" rx="11" ry="5" fill="#4caf50" transform="rotate(-18,106,188)"
+                        opacity=".85" />
+                    <ellipse cx="164" cy="188" rx="11" ry="5" fill="#4caf50" transform="rotate(18,164,188)"
+                        opacity=".85" />
+                </g>
+
+                <!-- FLORES TRASERAS -->
+                <g class="fl-back-l">
+                    <circle cx="76" cy="218" r="13" fill="#f8bbd0" opacity=".72" />
+                    <circle cx="76" cy="204" r="9" fill="#f8bbd0" opacity=".72" />
+                    <circle cx="88" cy="210" r="9" fill="#f8bbd0" opacity=".72" />
+                    <circle cx="64" cy="210" r="9" fill="#f8bbd0" opacity=".72" />
+                    <circle cx="76" cy="230" r="9" fill="#f8bbd0" opacity=".72" />
+                    <circle cx="76" cy="218" r="7" fill="#e91e8c" opacity=".85" />
+                    <circle cx="76" cy="218" r="3" fill="#fff9f0" />
+                </g>
+                <g class="fl-back-r">
+                    <circle cx="194" cy="218" r="13" fill="#e1bee7" opacity=".72" />
+                    <circle cx="194" cy="204" r="9" fill="#e1bee7" opacity=".72" />
+                    <circle cx="206" cy="210" r="9" fill="#e1bee7" opacity=".72" />
+                    <circle cx="182" cy="210" r="9" fill="#e1bee7" opacity=".72" />
+                    <circle cx="194" cy="230" r="9" fill="#e1bee7" opacity=".72" />
+                    <circle cx="194" cy="218" r="7" fill="#8e24aa" opacity=".85" />
+                    <circle cx="194" cy="218" r="3" fill="#f3e5f5" />
+                </g>
+
+                <!-- FLORES MEDIAS -->
+                <g class="fl-left2">
+                    <circle cx="90" cy="181" r="16" fill="#ffcc80" />
+                    <circle cx="90" cy="164" r="11" fill="#ffcc80" />
+                    <circle cx="104" cy="172" r="11" fill="#ffcc80" />
+                    <circle cx="76" cy="172" r="11" fill="#ffcc80" />
+                    <circle cx="103" cy="190" r="11" fill="#ffcc80" />
+                    <circle cx="77" cy="190" r="11" fill="#ffcc80" />
+                    <circle cx="90" cy="181" r="9" fill="#ef6c00" />
+                    <circle cx="90" cy="181" r="4" fill="#fff8e1" />
+                </g>
+                <g class="fl-right2">
+                    <circle cx="180" cy="181" r="16" fill="#b3e5fc" />
+                    <circle cx="180" cy="164" r="11" fill="#b3e5fc" />
+                    <circle cx="194" cy="172" r="11" fill="#b3e5fc" />
+                    <circle cx="166" cy="172" r="11" fill="#b3e5fc" />
+                    <circle cx="193" cy="190" r="11" fill="#b3e5fc" />
+                    <circle cx="167" cy="190" r="11" fill="#b3e5fc" />
+                    <circle cx="180" cy="181" r="9" fill="#0277bd" />
+                    <circle cx="180" cy="181" r="4" fill="#e1f5fe" />
+                </g>
+
+                <!-- FLORES PRINCIPALES -->
+                <g class="fl-left1">
+                    <circle cx="106" cy="154" r="19" fill="#f48fb1" />
+                    <circle cx="106" cy="134" r="13" fill="#f48fb1" />
+                    <circle cx="122" cy="143" r="13" fill="#f48fb1" />
+                    <circle cx="90" cy="143" r="13" fill="#f48fb1" />
+                    <circle cx="120" cy="165" r="13" fill="#f48fb1" />
+                    <circle cx="92" cy="165" r="13" fill="#f48fb1" />
+                    <circle cx="106" cy="154" r="11" fill="#c2185b" />
+                    <circle cx="106" cy="154" r="5" fill="#fce4ec" />
+                </g>
+                <g class="fl-right1">
+                    <circle cx="164" cy="154" r="19" fill="#ce93d8" />
+                    <circle cx="164" cy="134" r="13" fill="#ce93d8" />
+                    <circle cx="180" cy="143" r="13" fill="#ce93d8" />
+                    <circle cx="148" cy="143" r="13" fill="#ce93d8" />
+                    <circle cx="178" cy="165" r="13" fill="#ce93d8" />
+                    <circle cx="150" cy="165" r="13" fill="#ce93d8" />
+                    <circle cx="164" cy="154" r="11" fill="#6a1b9a" />
+                    <circle cx="164" cy="154" r="5" fill="#f3e5f5" />
+                </g>
+
+                <!-- FLOR CENTRAL GRANDE -->
+                <g class="fl-center">
+                    <circle cx="135" cy="128" r="23" fill="#fff59d" />
+                    <circle cx="135" cy="104" r="16" fill="#fff59d" />
+                    <circle cx="155" cy="112" r="16" fill="#fff59d" />
+                    <circle cx="115" cy="112" r="16" fill="#fff59d" />
+                    <circle cx="152" cy="144" r="16" fill="#fff59d" />
+                    <circle cx="118" cy="144" r="16" fill="#fff59d" />
+                    <circle cx="155" cy="128" r="16" fill="#fff59d" />
+                    <circle cx="115" cy="128" r="16" fill="#fff59d" />
+                    <circle cx="135" cy="128" r="14" fill="#f9a825" />
+                    <circle cx="135" cy="128" r="6" fill="#fffde7" />
+                    <circle cx="128" cy="118" r="3" fill="white" opacity=".5" />
+                </g>
+
+                <!-- FLORECITAS RELLENO -->
+                <g class="fl-fill">
+                    <circle cx="135" cy="170" r="12" fill="#f48fb1" />
+                    <circle cx="135" cy="157" r="8" fill="#f48fb1" />
+                    <circle cx="145" cy="163" r="8" fill="#f48fb1" />
+                    <circle cx="125" cy="163" r="8" fill="#f48fb1" />
+                    <circle cx="135" cy="170" r="6" fill="#c2185b" />
+                    <circle cx="135" cy="170" r="2.5" fill="#fce4ec" />
+                </g>
+                <g class="fl-tiny-l">
+                    <circle cx="74" cy="190" r="10" fill="#a5d6a7" />
+                    <circle cx="74" cy="179" r="7" fill="#a5d6a7" />
+                    <circle cx="83" cy="184" r="7" fill="#a5d6a7" />
+                    <circle cx="65" cy="184" r="7" fill="#a5d6a7" />
+                    <circle cx="74" cy="190" r="5" fill="#2e7d32" />
+                </g>
+                <g class="fl-tiny-r">
+                    <circle cx="196" cy="190" r="10" fill="#ffe082" />
+                    <circle cx="196" cy="179" r="7" fill="#ffe082" />
+                    <circle cx="205" cy="184" r="7" fill="#ffe082" />
+                    <circle cx="187" cy="184" r="7" fill="#ffe082" />
+                    <circle cx="196" cy="190" r="5" fill="#f57f17" />
+                </g>
+
+                <!-- CORAZONES EN RAMO -->
+                <text x="48" y="168" fill="#f48fb1" font-size="16" opacity=".8">♥</text>
+                <text x="212" y="175" fill="#ce93d8" font-size="14" opacity=".8">♥</text>
+                <text x="58" y="295" fill="#ffd6e7" font-size="13" opacity=".6">♡</text>
+                <text x="202" y="290" fill="#e0aaff" font-size="13" opacity=".6">♡</text>
+                <text x="135" y="92" fill="#fff59d" font-size="12" opacity=".7" text-anchor="middle">✦</text>
+
+                <!-- PAPEL ENVOLVENTE -->
+                <path d="M72 318 Q82 298 135 293 Q188 298 198 318 L210 378 Q135 390 60 378 Z" fill="url(#wg)"
+                    opacity=".94" />
+                <path d="M72 318 Q84 303 135 298 Q186 303 198 318" fill="none" stroke="rgba(255,255,255,.28)"
+                    stroke-width="1.5" />
+                <line x1="88" y1="320" x2="83" y2="376" stroke="rgba(255,255,255,.1)" stroke-width="1.2" />
+                <line x1="108" y1="317" x2="105" y2="379" stroke="rgba(255,255,255,.1)" stroke-width="1.2" />
+                <line x1="135" y1="315" x2="135" y2="382" stroke="rgba(255,255,255,.1)" stroke-width="1.2" />
+                <line x1="162" y1="317" x2="165" y2="379" stroke="rgba(255,255,255,.1)" stroke-width="1.2" />
+                <line x1="182" y1="320" x2="187" y2="376" stroke="rgba(255,255,255,.1)" stroke-width="1.2" />
+                <text x="95" y="356" fill="rgba(255,255,255,.3)" font-size="14" text-anchor="middle">♥</text>
+                <text x="135" y="360" fill="rgba(255,255,255,.3)" font-size="14" text-anchor="middle">♥</text>
+                <text x="175" y="356" fill="rgba(255,255,255,.3)" font-size="14" text-anchor="middle">♥</text>
+                <!-- MOÑO -->
+                <path d="M90 343 Q135 334 180 343" fill="none" stroke="url(#rbg)" stroke-width="9"
+                    stroke-linecap="round" />
+                <path d="M122 340 Q110 323 98 332 Q112 341 122 340Z" fill="#ffd6e7" />
+                <path d="M148 340 Q160 323 172 332 Q158 341 148 340Z" fill="#ffd6e7" />
+                <circle cx="135" cy="339" r="6" fill="#fffde7" />
+                <circle cx="135" cy="339" r="3" fill="#ffd6e7" />
+            </svg>
+
+            <!-- PASTEL SVG -->
+            <div class="cake-wrap">
+                <svg width="210" height="310" viewBox="0 0 210 310" style="overflow:visible;">
+                    <defs>
+                        <linearGradient id="p3" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#f9a8d4" />
+                            <stop offset="100%" stop-color="#f472b6" />
+                        </linearGradient>
+                        <linearGradient id="p2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#d8b4fe" />
+                            <stop offset="100%" stop-color="#a855f7" />
+                        </linearGradient>
+                        <linearGradient id="p1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#fde68a" />
+                            <stop offset="100%" stop-color="#f59e0b" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Plato -->
+                    <ellipse cx="105" cy="284" rx="88" ry="11" fill="#f4c0d1" opacity=".5" />
+                    <ellipse cx="105" cy="282" rx="82" ry="8" fill="#f4c0d1" />
+                    <!-- Piso 3 -->
+                    <rect x="18" y="205" width="174" height="72" rx="11" fill="url(#p3)" />
+                    <path
+                        d="M18,205 Q33,195 48,205 Q63,215 78,205 Q93,195 108,205 Q123,215 138,205 Q153,195 168,205 Q180,198 192,205"
+                        fill="rgba(255,255,255,.85)" stroke="none" />
+                    <circle cx="52" cy="239" r="5" fill="#ffd700" />
+                    <circle cx="78" cy="231" r="4" fill="white" opacity=".9" />
+                    <circle cx="105" cy="242" r="5" fill="#ffd700" />
+                    <circle cx="132" cy="231" r="4" fill="white" opacity=".9" />
+                    <circle cx="158" cy="240" r="5" fill="#ffd700" />
+                    <text x="65" y="262" fill="rgba(255,255,255,.55)" font-size="12" text-anchor="middle">♥</text>
+                    <text x="105" y="260" fill="rgba(255,255,255,.55)" font-size="12" text-anchor="middle">♥</text>
+                    <text x="145" y="262" fill="rgba(255,255,255,.55)" font-size="12" text-anchor="middle">♥</text>
+                    <!-- Piso 2 -->
+                    <rect x="40" y="144" width="130" height="64" rx="11" fill="url(#p2)" />
+                    <path
+                        d="M40,144 Q52,135 64,144 Q76,153 88,144 Q100,135 112,144 Q124,153 136,144 Q148,135 158,144 Q163,139 170,144"
+                        fill="rgba(255,255,255,.85)" stroke="none" />
+                    <circle cx="68" cy="172" r="5" fill="#fbbf24" />
+                    <circle cx="92" cy="165" r="4" fill="white" opacity=".9" />
+                    <circle cx="116" cy="175" r="5" fill="#fbbf24" />
+                    <circle cx="142" cy="165" r="4" fill="white" opacity=".9" />
+                    <text x="80" y="193" fill="rgba(255,255,255,.55)" font-size="12" text-anchor="middle">♥</text>
+                    <text x="130" y="193" fill="rgba(255,255,255,.55)" font-size="12" text-anchor="middle">♥</text>
+                    <!-- Piso 1 -->
+                    <rect x="65" y="92" width="80" height="54" rx="11" fill="url(#p1)" />
+                    <path d="M65,92 Q75,84 85,92 Q95,100 105,92 Q115,84 125,92 Q135,100 143,92 Q146,89 145,92"
+                        fill="rgba(255,255,255,.85)" stroke="none" />
+                    <circle cx="87" cy="114" r="4" fill="#f43f8e" />
+                    <circle cx="105" cy="108" r="3" fill="white" opacity=".9" />
+                    <circle cx="123" cy="115" r="4" fill="#f43f8e" />
+                    <text x="105" y="133" fill="rgba(255,255,255,.55)" font-size="11" text-anchor="middle">♥</text>
+                    <!-- Drips -->
+                    <path d="M18,220 Q24,228 18,237" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="4"
+                        stroke-linecap="round" />
+                    <path d="M192,218 Q186,226 192,235" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="4"
+                        stroke-linecap="round" />
+                    <path d="M40,158 Q46,166 40,174" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="3.5"
+                        stroke-linecap="round" />
+                    <path d="M170,157 Q164,165 170,173" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="3.5"
+                        stroke-linecap="round" />
+                    <!-- Velas -->
+                    <rect x="78" y="62" width="7" height="32" rx="3.5" fill="#f472b6" />
+                    <g class="flame">
+                        <ellipse cx="81.5" cy="59" rx="4" ry="6" fill="#ffd700" />
+                        <ellipse cx="81.5" cy="58" rx="2.5" ry="4" fill="#ff9500" />
+                        <ellipse cx="81.5" cy="57" rx="1.2" ry="2.5" fill="white" opacity=".8" />
+                    </g>
+                    <rect x="92" y="56" width="7" height="38" rx="3.5" fill="#c084fc" />
+                    <g class="flame">
+                        <ellipse cx="95.5" cy="53" rx="4" ry="6" fill="#ffd700" />
+                        <ellipse cx="95.5" cy="52" rx="2.5" ry="4" fill="#ff9500" />
+                        <ellipse cx="95.5" cy="51" rx="1.2" ry="2.5" fill="white" opacity=".8" />
+                    </g>
+                    <rect x="106" y="51" width="8" height="43" rx="4" fill="#fb923c" />
+                    <g class="flame">
+                        <ellipse cx="110" cy="48" rx="4.5" ry="7" fill="#ffd700" />
+                        <ellipse cx="110" cy="47" rx="2.8" ry="4.5" fill="#ff9500" />
+                        <ellipse cx="110" cy="45" rx="1.3" ry="2.8" fill="white" opacity=".8" />
+                    </g>
+                    <rect x="121" y="56" width="7" height="38" rx="3.5" fill="#67e8f9" />
+                    <g class="flame">
+                        <ellipse cx="124.5" cy="53" rx="4" ry="6" fill="#ffd700" />
+                        <ellipse cx="124.5" cy="52" rx="2.5" ry="4" fill="#ff9500" />
+                        <ellipse cx="124.5" cy="51" rx="1.2" ry="2.5" fill="white" opacity=".8" />
+                    </g>
+                    <rect x="134" y="62" width="7" height="32" rx="3.5" fill="#a5f3fc" />
+                    <g class="flame">
+                        <ellipse cx="137.5" cy="59" rx="4" ry="6" fill="#ffd700" />
+                        <ellipse cx="137.5" cy="58" rx="2.5" ry="4" fill="#ff9500" />
+                        <ellipse cx="137.5" cy="57" rx="1.2" ry="2.5" fill="white" opacity=".8" />
+                    </g>
+                    <!-- Corazones laterales pastel -->
+                    <text x="2" y="230" fill="#f9a8d4" font-size="18" opacity=".8">♥</text>
+                    <text x="192" y="230" fill="#d8b4fe" font-size="18" opacity=".8">♥</text>
+                    <text x="8" y="175" fill="#fbbf24" font-size="13" opacity=".6">♡</text>
+                    <text x="192" y="175" fill="#f9a8d4" font-size="13" opacity=".6">♡</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="div-fancy">
+            <div class="div-line"></div><span class="div-heart">♥</span>
+            <div class="div-line"></div><span class="div-heart">♥</span>
+            <div class="div-line"></div><span class="div-heart">♥</span>
+            <div class="div-line"></div>
+        </div>
+
+        <!-- MAÑANITAS -->
+        <div class="song-card">
+            <div class="song-title">🎶 Las Mañanitas de Dai 🎶</div>
+            <div class="notes-row">
+                <span class="note">♩</span><span class="note">♪</span><span class="note">♫</span><span
+                    class="note">♬</span><span class="note">♩</span>
+            </div>
+            <div class="song-text">
+                <p>Hellouu ✨ Estas son las mañanitas que cantaba el rey David, hoy por ser un día tan especial
+                    <strong>Dai</strong>, te las canto para ti 💛</p>
+                <p>Despierta, mi bien, despierta, <strong>Dai</strong>, mira que ya amaneció, ya los pajaritos cantan y
+                    la luna ya se escondió 🌙</p>
+                <p>Qué linda está la mañana en que vengo a saludarte, <strong>Dai</strong>, vengo con todo mi cariño y
+                    mis ganas de felicitarte 🎉</p>
+            </div>
+        </div>
+
+        <!-- CARTA -->
+        <button class="btn-carta" id="btnCarta" onclick="toggleLetter()">💌 Abrir mi carta especial para Dai</button>
+        <div class="letter-card" id="lc">
+            <div class="letter-hearts">
+                <span class="lh" style="color:#f9a8d4;">♥</span>
+                <span class="lh">♥</span>
+                <span class="lh">♥</span>
+                <span class="lh">♥</span>
+                <span class="lh" style="color:#f9a8d4;">♥</span>
+            </div>
+            <p>Hoy cumples <span class="hl">19 años</span>… qué rápido pasa el tiempo, ¿verdad? 🤭✨</p>
+            <p>Solo quiero desearte un cumpleaños muy feliz, que la pases súper bonito y que la vida te regale
+                muchísimas cosas lindas. Que cumplas todos tus sueños, cada meta que te propongas, y que nunca te falten
+                motivos para sonreír 💫</p>
+            <p class="pink">También quiero que nunca olvides algo muy importante:<br>Te quiero mucho de verdad, a pesar
+                de todo siempre te voy a amar 🤍</p>
+            <p>Sé que este día no es muy especial pero hoy intenta olvidarlo un ratito… sonríe y disfruta, déjate querer
+                y pásala bonito, porque <span class="hl">te lo mereces mucho</span> 🥰</p>
+            <p>Este mensajito es para alegrarte el día, aunque sea un poquito, y recordarte lo especial que eres 😘💖
+            </p>
+            <div class="letter-hearts">
+                <span class="lh" style="color:#ffd700;">♡</span>
+                <span class="lh">♡</span>
+                <span class="lh" style="color:#ffd700;">♡</span>
+                <span class="lh">♡</span>
+                <span class="lh" style="color:#ffd700;">♡</span>
+            </div>
+            <div class="letter-deco">✦ ♥ ✿ ♥ ✦</div>
+        </div>
+
+    </div>
+
+    <script>
+        const hbg = document.getElementById('hbg');
+        const hColors = ['#f9a8d4', '#e0aaff', '#ffc2e2', '#ff79c6', '#c77dff', '#ffd6e7', '#f472b6'];
+        const hSymbols = ['♥', '♡', '♥', '♡', '✿'];
+        for (let i = 0; i < 28; i++) {
+            const h = document.createElement('div');
+            h.className = 'hrt';
+            h.textContent = hSymbols[Math.floor(Math.random() * hSymbols.length)];
+            const fs = 10 + Math.random() * 22;
+            h.style.cssText = `left:${Math.random() * 100}%;bottom:${-20 + Math.random() * 20}px;--fs:${fs}px;--c:${hColors[Math.floor(Math.random() * hColors.length)]};--d:${7 + Math.random() * 10}s;--dl:${Math.random() * 9}s;--rot:${-20 + Math.random() * 40}deg;`;
+            hbg.appendChild(h);
+        }
+
+        const spk = document.getElementById('spk');
+        const spColors = ['#f9a8d4', '#e0aaff', '#ffc2e2', '#ffd6e7', '#fff59d', '#b3e5fc'];
+        for (let i = 0; i < 50; i++) {
+            const s = document.createElement('div');
+            s.className = 'sp';
+            const sz = 2 + Math.random() * 4;
+            s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random() * 100}%;top:${Math.random() * 100}%;background:${spColors[Math.floor(Math.random() * spColors.length)]};--sd:${2 + Math.random() * 5}s;--dl2:${Math.random() * 6}s;`;
+            spk.appendChild(s);
+        }
+
+        function toggleLetter() {
+            const lc = document.getElementById('lc');
+            const btn = document.getElementById('btnCarta');
+            lc.classList.toggle('open');
+            if (lc.classList.contains('open')) {
+                btn.textContent = '💌 Cerrar la carta';
+                launchConfetti();
+            } else {
+                btn.textContent = '💌 Abrir mi carta especial para Dai';
+            }
+        }
+
+        function launchConfetti() {
+            const cs = ['#f43f8e', '#a855f7', '#fb923c', '#ffd700', '#67e8f9', '#f9a8d4', '#e0aaff', '#ffc2e2', '#fff59d'];
+            for (let i = 0; i < 90; i++) {
+                setTimeout(() => {
+                    const c = document.createElement('div');
+                    c.className = 'cfp';
+                    const sz = 5 + Math.random() * 11;
+                    const isHeart = Math.random() > 0.55;
+                    if (isHeart) {
+                        c.textContent = '♥';
+                        c.style.cssText = `left:${Math.random() * 100}%;font-size:${sz + 4}px;color:${cs[Math.floor(Math.random() * cs.length)]};background:none;animation-duration:${2 + Math.random() * 2.5}s;`;
+                    } else {
+                        c.style.cssText = `left:${Math.random() * 100}%;width:${sz}px;height:${sz}px;background:${cs[Math.floor(Math.random() * cs.length)]};border-radius:${Math.random() > .5 ? '50%' : '3px'};animation-duration:${2 + Math.random() * 2.5}s;`;
+                    }
+                    document.body.appendChild(c);
+                    setTimeout(() => c.remove(), 5000);
+                }, i * 30);
+            }
+        }
+
+        setTimeout(launchConfetti, 500);
+    </script>
+</body>
+
+</html>
