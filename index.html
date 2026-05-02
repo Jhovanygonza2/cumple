@@ -743,6 +743,66 @@
                 opacity: 0;
             }
         }
+
+        /* FOTO ESPECIAL */
+        .photo-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 10px;
+            perspective: 1000px;
+        }
+
+        .photo-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(249, 168, 212, 0.3);
+            border-radius: 20px;
+            padding: 16px 16px 22px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(247, 37, 133, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transform: rotate(-3deg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 280px;
+            animation: floatPhoto 5s ease-in-out infinite;
+        }
+
+        @keyframes floatPhoto {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(-1deg);
+            }
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px) rotate(0deg) scale(1.05);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 30px rgba(247, 37, 133, 0.3);
+            border-color: rgba(249, 168, 212, 0.6);
+            animation-play-state: paused;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #ffc2e2;
+            text-align: center;
+            margin-top: 16px;
+            font-size: 1.35rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -1070,6 +1130,14 @@
             <div class="div-line"></div>
         </div>
 
+        <!-- FOTO ESPECIAL -->
+        <div class="photo-wrap">
+            <div class="photo-card">
+                <img src="foto.jpeg" alt="Dai de pequeña" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x350/2a0a3a/ffc2e2?text=Guarda+tu+foto+como+foto.jpeg';">
+                <div class="photo-caption">Tan hermosa ✨</div>
+            </div>
+        </div>
+
         <!-- MAÑANITAS -->
         <div class="song-card">
             <div class="song-title">🎶 Las Mañanitas de Dai 🎶</div>
@@ -1079,7 +1147,8 @@
             </div>
             <div class="song-text">
                 <p>Hellouu ✨ Estas son las mañanitas que cantaba el rey David, hoy por ser un día tan especial
-                    <strong>Dai</strong>, te las canto para ti 💛</p>
+                    <strong>Dai</strong>, te las canto para ti 💛
+                </p>
                 <p>Despierta, mi bien, despierta, <strong>Dai</strong>, mira que ya amaneció, ya los pajaritos cantan y
                     la luna ya se escondió 🌙</p>
                 <p>Qué linda está la mañana en que vengo a saludarte, <strong>Dai</strong>, vengo con todo mi cariño y
